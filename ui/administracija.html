@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Putovanja - Administrativni radnik</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Službena Putovanja</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Zakaži Putovanje</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="status.html">Status Putovanja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nadredjeni.html">Nadređeni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Administrativni radnik
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div id="container" class="container" hidden>
+      <table class="table table-striped" id="myTable">
+          <thead>
+            <tr>
+              <th>Ime i prezime</th>
+              <th>Email</th>
+              <th>Odredište</th>
+              <th>Datum Polaska</th>
+              <th>Datum Povratka</th>
+              <th>Akcija</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>  
+  </div>
+
+  <div id="detalji" class="container" hidden>
+      <button type="button" id="putovanjaNazad" onclick="vratiNazad()" class="btn btn-secondary" style="margin-top: 2%">< Putovanja</button>
+      <form id="detaljiForm" style="margin-top:2%">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="imePrezimeInput">Ime i prezime</label>
+              <label class="form-control" id="imePrezimeInput"></label>
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="emailInput">Email</label>
+                  <label class="form-control" id="emailInput"></label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="odredisteInput">Odredište</label>
+                    <label class="form-control" id="odredisteInput"></label>
+                </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="datumPolaskaInput">Datum polaska</label>
+              <label class="form-control" id="datumPolaskaInput" ></label>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="datumPovratkaInput">Datum povratka</label>
+              <label class="form-control" id="datumPovratkaInput"></label>
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="odobrenoInput">Službeni put odobren</label>
+                <label class="form-control" id="odobrenoInput" ></label>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="hotelInput">Ime Hotela i adresa</label>
+                <input type="text" name="hotel" placeholder="Molimo unesite ime Hotela i adresu" class="form-control" id="hotelInput"></label>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="prevozInput">Vrsta Prevoza</label>
+                <select class="form-control" id="prevozInput" name="prevoz">
+                    <option value="">--- Odaberite ---</option>
+                    <option value="automobil">Automobil</option>
+                    <option value="autobus">Autobus</option>
+                    <option value="avion">Avion</option>
+                    <option value="voz">Voz</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="dokumentacijaInput">Završena Dokumentacija</label>
+                <select class="form-control" id="dokumentacijaInput" name="dokumentacija">
+                    <option value="">--- Odaberite ---</option>
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="osiguranjeInput">Osiguranje uplaćeno</label>
+                <select class="form-control" id="osiguranjeInput" name="osiguranje">
+                    <option value="">--- Odaberite ---</option>
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="uplateInput">Završene uplate</label>
+                <select class="form-control" id="uplateInput" name="uplate">
+                    <option value="">--- Odaberite ---</option>
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select>
+              </div>
+          </div>
+          <input type="hidden" name="putovanjeId" id="putovanjeId">
+          <button class="btn btn-primary">Sačuvaj</button>
+        </form>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      var container = document.getElementById('container');
+      var detalji = document.getElementById('detalji');
+      var myTable = document.getElementById('myTable');
+      $.get("http://localhost:59647/api/putovanja/odobrena").done(function(data) {
+        data.forEach(putovanje => {
+          var red = myTable.insertRow();
+
+          var imePrezime = red.insertCell();
+          imePrezime.innerHTML = putovanje.imePrezime;
+          var email = red.insertCell();
+          email.innerHTML = putovanje.email;
+          var odrediste = red.insertCell();
+          odrediste.innerHTML = putovanje.odrediste;
+          var datumPolaska = red.insertCell();
+          datumPolaska.innerHTML = putovanje.datumPolaska;
+          var datumPovratka = red.insertCell();
+          datumPovratka.innerHTML = putovanje.datumPovratka;
+          var dugme = red.insertCell();
+          dugme.innerHTML = "<button class=\"btn btn-warning btn-sm\" onClick=\"obradiPutovanje(this)\" dataPath=\"http://localhost:59647/api/putovanja/"+putovanje.putovanjeId+"\">Obradi</button>";
+        })
+        container.hidden = false;
+      }).fail(function() {
+        console.log('API not working :(');
+      })
+    });
+
+    function obradiPutovanje(button) {
+      var url = button.attributes[2].nodeValue;
+      $.get(url).done(function(data) {
+        $("#putovanjeId").val(data.putovanjeId);
+        $("#imePrezimeInput").html(data.imePrezime);
+        $("#emailInput").html(data.email);
+        $("#odredisteInput").html(data.odrediste);
+        $("#datumPolaskaInput").html(data.datumPolaska);
+        $("#datumPovratkaInput").html(data.datumPovratka);
+        if (data.odobreno == false) {
+          $("#odobrenoInput").html("Ne");
+        } else {
+          $("#odobrenoInput").html("Da");
+        }
+        if (data.hotel == null || data.hotel == "") {
+          $("#hotelInput").attr("placeholder", "Nije obrađeno");
+        } else {
+          $("#hotelInput").val(data.hotel);
+        }
+        if (data.prevoz == null || data.prevoz == "") {
+          $("#prevozInput").val("");
+        } else {
+          $("#prevozInput").val(data.prevoz);
+        }
+        if (data.dokumentacija == false) {
+          $("#dokumentacijaInput").val("false");
+        } else {
+          $("#dokumentacijaInput").val("true");
+        }
+        if (data.osiguranje == false) {
+          $("#osiguranjeInput").val("false");
+        } else {
+          $("#osiguranjeInput").val("true");
+        }
+        if (data.uplate == false) {
+          $("#uplateInput").val("false");
+        } else {
+          $("#uplateInput").val("true");
+        }
+
+        container.hidden = true;
+        detalji.hidden = false;
+      }).fail(function() {
+        alert('Neuspješan get :(');
+      })
+    }
+
+    function vratiNazad() {
+      detalji.hidden = true;
+      container.hidden = false;
+    }
+
+    $('#detaljiForm').submit(function (e) {
+      e.preventDefault();
+      var formData = $(this).serialize();
+
+      $.post("http://localhost:59647/api/putovanja/update", formData).done(function() {
+        alert('Snimanje uspjelo!');
+      }).fail(function() {
+        alert('Snimanje neuspješno :(');
+      })
+    });
+  </script>
+
+</body>
+
+</html>

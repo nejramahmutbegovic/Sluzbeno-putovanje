@@ -1,0 +1,14 @@
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\bin\Debug\netcoreapp2.1\PutovanjaAPI.deps.json
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\bin\Debug\netcoreapp2.1\PutovanjaAPI.runtimeconfig.json
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\bin\Debug\netcoreapp2.1\PutovanjaAPI.runtimeconfig.dev.json
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\bin\Debug\netcoreapp2.1\PutovanjaAPI.dll
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\bin\Debug\netcoreapp2.1\PutovanjaAPI.pdb
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.csprojAssemblyReference.cache
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.csproj.CoreCompileInputs.cache
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.RazorAssemblyInfo.cache
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.RazorAssemblyInfo.cs
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.AssemblyInfoInputs.cache
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.AssemblyInfo.cs
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.dll
+C:\Users\Nejra\Desktop\Sluzbeno_Putovanje\NejraPutovanjaUpdated\PutovanjaAPI\PutovanjaAPI\obj\Debug\netcoreapp2.1\PutovanjaAPI.pdb

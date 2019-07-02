@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Putovanja - Zakazivanje</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Službena Putovanja</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Zakaži Putovanje
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="status.html">Status Putovanja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nadredjeni.html">Nadređeni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="administracija.html">Administrativni radnik</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div id="container" class="container" hidden>
+      <form id="prijavaForm" style="margin-top:2%">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="imeInput">Ime</label>
+              <input type="text" class="form-control" id="imeInput" name="Ime" placeholder="Vaše ime" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="prezimeInput">Prezime</label>
+              <input type="text" class="form-control" id="prezimeInput" name="Prezime" placeholder="Vaše prezime" required>
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="emailInput">Email</label>
+                  <input type="email" class="form-control" id="emailInput" name="Email" placeholder="Vaš email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="odredisteInput">Odredište</label>
+                    <select class="form-control" id="odredisteInput" name="OdredisteId" required>
+                        <option value="">--- Odaberite ---</option>
+                    </select>
+                </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="datumPolaskaInput">Datum polaska</label>
+              <input type="date" class="form-control" id="datumPolaskaInput" name="DatumPolaska" placeholder="Željeni datum polaska" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="datumPovratkaInput">Datum povratka</label>
+              <input type="date" class="form-control" id="datumPovratkaInput" name="DatumPovratka" placeholder="Željeni datum povratka" required>
+            </div>
+          </div>
+          <button class="btn btn-primary">Pošalji</button>
+        </form>
+       
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      var container = document.getElementById('container');
+      var odredistaSelect = document.getElementById('odredisteInput');
+      $.get("http://localhost:59647/api/putovanja/odredista").done(function(data) {
+        data.forEach(odrediste => {
+          var option = document.createElement("option");
+          option.text = odrediste.naziv;
+          option.value = odrediste.id;
+          odredistaSelect.appendChild(option);
+        })
+        container.hidden = false;
+      }).fail(function() {
+        console.log('API not working :(');
+      })
+    });
+
+    $('#prijavaForm').submit(function (e) {
+      e.preventDefault();
+
+      var datumPolaska = e.currentTarget[4].value;
+      var datumDolaska = e.currentTarget[5].value;
+
+      if (datumPolaska > datumDolaska) {
+        alert('Datum polaska mora biti prije datuma povratka!');
+        return;
+      }
+
+      var formData = $(this).serialize();
+
+      $.post("http://localhost:59647/api/putovanja", formData).done(function() {
+        alert('Uspješna prijava!');
+        $(this).trigger("reset");
+      }).fail(function() {
+        alert('Neuspješna prijava :(');
+      })
+    });
+    
+
+  </script>
+
+</body>
+
+</html>
